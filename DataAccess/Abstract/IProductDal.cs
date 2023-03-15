@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    //NuGet
-    //Code Refactoring
     public interface IProductDal : IEntityRepository<Product>
     {
         List<ProductDetailDto> GetProductDetails();

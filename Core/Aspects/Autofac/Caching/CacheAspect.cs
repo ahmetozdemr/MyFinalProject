@@ -1,13 +1,13 @@
-﻿using Castle.DynamicProxy;
-using Core.CrossCuttingConcerns.Caching;
-using Core.Utilities.Interceptors;
-using Core.Utilities.IoC;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Castle.DynamicProxy;
+using Core.CrossCuttingConcerns.Caching;
+using Core.Utilities.Interceptors;
+using Core.Utilities.IoC;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.Aspects.Autofac.Caching
 {
@@ -29,8 +29,7 @@ namespace Core.Aspects.Autofac.Caching
             var key = $"{methodName}({string.Join(",", arguments.Select(x => x?.ToString() ?? "<Null>"))})";
             if (_cacheManager.IsAdd(key))
             {
-                invocation.ReturnValue = _cacheManager.Get<ICacheManager>(key);
-                //invocation.ReturnValue = _cacheManager.Get(key); Bu kod çalışmazsa üstekini dene
+                invocation.ReturnValue = _cacheManager.Get(key);
                 return;
             }
             invocation.Proceed();

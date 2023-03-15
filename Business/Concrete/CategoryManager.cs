@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    
     public class CategoryManager : ICategoryService
     {
         ICategoryDal _categoryDal;
@@ -22,12 +21,14 @@ namespace Business.Concrete
 
         public IDataResult<List<Category>> GetAll()
         {
-          return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
+
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
-        public IDataResult<Category>  GetById(int categoryId)
+        public IDataResult<Category> GetById(int categoryId)
         {
-            return new SuccessDataResult<Category>(_categoryDal.Get(c=> c.CategoryId == categoryId));
+            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.CategoryId == categoryId));
         }
+
     }
 }

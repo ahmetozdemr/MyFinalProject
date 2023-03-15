@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Interceptors
 {
+
     public class AspectInterceptorSelector : IInterceptorSelector
     {
         public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
@@ -17,10 +18,12 @@ namespace Core.Utilities.Interceptors
             var methodAttributes = type.GetMethod(method.Name)
                 .GetCustomAttributes<MethodInterceptionBaseAttribute>(true);
             classAttributes.AddRange(methodAttributes);
-            //classAttributes.Add(new ExceptionLogAspect(typeof(FileLogger)));
 
             return classAttributes.OrderBy(x => x.Priority).ToArray();
         }
     }
+
+
+
 
 }

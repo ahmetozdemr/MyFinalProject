@@ -1,5 +1,4 @@
 ﻿using Core.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    public class ProductDetailDto: IDto
+    public class ProductDetailDto : IDto
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
